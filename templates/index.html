@@ -1,10 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+body{
+	text-align:center;
+	padding:20px;
+	background-color:#1F3D3D;
+	color:#FFF;
+
+}
+.form_div{
+	display:inline-block;
+	width:90%;
+	max-width:500px;
+	border:#CCC 2px solid;
+	padding:10px;
+	text-align:left;
+}
+.form_div input, .form_div select{
+	width:90%;
+	padding:10px;
+	margin-bottom:17px;
+}
+.form_div label{
+	font-size:16px;
+	font-weight:bold;
+}
+.form_div button{
+	width:150px;
+	padding:10px;
+	margin-bottom:30px;
+	border-radius:10px;
+	background-color:#09F;
+	color:#FFF;
+	cursor:pointer;
+	
+}
+
+.form_div >p.error{
+	padding:20px;
+	color:#F00;
+}
+
+.form_div >p.footer{
+	font-size:10px;
+	font-style:italic;
+	margin-top:50px;
+}
+
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>Amazing app to help you find nearest MBTA station</title>
 </head>
 <body>
 
+	<h2>Hello! Welcome to MBTA Station finder</h2>
+    <div class="form_div">
+    <p class="error"> {{ errormsg }} </p>
+        <form action="/nearest" method="post" autocomplete="off">
+            {{ form.csrf_token }}
+            <div>
+                {{ form.place.label }}
+                {{ form.place }}
+            </div>
+            <div>
+		{{ form.vehicle_type.label }}	
+                {{ form.vehicle_type }}
+            </div>
+            <div>
+                {{ form.radius.label }}
+                {{ form.radius }}
+            </div>
+            <div>
+                <button>Search</button>
+            </div>
+        
+        
+        </form>
+        <p class="footer">Happy Place finding!</p>
+	</div>
 </body>
 </html>

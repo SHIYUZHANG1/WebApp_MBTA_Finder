@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+body{
+	text-align:center;
+	padding:20px;
+	background-color:#1F3D3D;
+	color:#222;
+
+}
+.form_div{
+	display:inline-block;
+	width:90%;
+	max-width:800px;
+	min-height:400px;
+	border:#CCC 2px solid;
+	padding:30px;
+	text-align:left;
+	background-color:#FFF;
+}
+.form_div table{
+	width:100%;
+	border-collapse:collapse;
+	border:1px solid #CCC;
+}
+.form_div table td, .form_div table th{
+	padding:15px;
+	border-bottom:1px solid #CCC;
+}
+.form_div > p.footer{
+	font-size:10px;
+	font-style:italic;
+	margin-top:50px;
+}
+.nav > a{
+	float:left; margin-right:30px;
+	color:#09F;
+	
+}
+.nresult{
+	margin-top:50px;
+	font-size:18px;
+	color:#444;
+	}
+}
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>MBTA station close to  {{ data[0] }}</title>
+</head>
+<body>
+	<div class="nav"><a href="./">Back Home</a></div>
+	<h2 style="color:#999">MBTA station close to  {{ data[0] }}</h2>
+    
+    <div class="form_div">
+    {% if(data[0] == '')  %}
+    <table>
+    	<tr>
+        	<th scope="row">Station name:</th>
+            <td>{{ data[1] }}</td>
+        </tr>
+        <tr>
+        	<th scope="row">Wheelchair accessible:</th>
+            <td>{{ data[2] }}</td>
+        </tr>
+        <tr>
+        	<th scope="row">Type of Transportation:</th>
+            <td>{{ data[3] }}</td>
+        </tr>
+    </table>
+    {% else %}
+    
+    <p class="nresult">Oop!  No nearby Station was found for this location.</p>
+    
+    {% endif  %}
+    
+        <p class="footer">Happy Place finding!</p>
+	</div>
+</body>
+</html>
